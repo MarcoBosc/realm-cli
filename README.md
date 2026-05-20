@@ -1,25 +1,28 @@
+[![Português](https://img.shields.io/badge/lang-Português-green.svg)](README.pt-BR.md)
+
+
 # 📦 Realm CLI Explorer
 
-Ferramenta CLI para explorar bancos **.realm** diretamente pelo terminal de forma rápida e prática.
+CLI tool to explore **.realm** databases directly from the terminal quickly and efficiently.
 
-Ideal para debug, engenharia reversa, análise de dados e inspeção de apps mobile.
-
----
-
-# ✨ Funcionalidades
-
-* 📋 Listar schemas (tabelas)
-* 🔍 Inspecionar estrutura de dados
-* 🔎 Executar queries (Realm Query Language)
-* 📊 Visualização em tabela no terminal
-* 📄 Paginação de resultados
-* 📤 Exportação para JSON e CSV
-* 💻 Modo interativo (tipo shell)
-* ⚡ Autocomplete de schemas (TAB)
+Perfect for debugging, reverse engineering, data analysis, and mobile app inspection.
 
 ---
 
-# 📁 Estrutura do Projeto
+# ✨ Features
+
+* 📋 List schemas (tables)
+* 🔍 Inspect data structures
+* 🔎 Execute queries (Realm Query Language)
+* 📊 Table visualization in terminal
+* 📄 Result pagination
+* 📤 Export to JSON and CSV
+* 💻 Interactive shell mode
+* ⚡ Schema autocomplete (TAB)
+
+---
+
+# 📁 Project Structure
 
 ```bash
 realm-cli/
@@ -27,13 +30,13 @@ realm-cli/
  ├── install.sh
  ├── package.json
  └── README.md
-```
+````
 
 ---
 
-# 🚀 Instalação
+# 🚀 Installation
 
-## 🔹 1. Clonar ou baixar
+## 🔹 1. Clone or download
 
 ```bash
 git clone <repo-url>
@@ -42,7 +45,7 @@ cd realm-cli
 
 ---
 
-## 🔹 2. Instalar dependências
+## 🔹 2. Install dependencies
 
 ```bash
 npm install
@@ -50,122 +53,122 @@ npm install
 
 ---
 
-## 🔹 3. Instalar como comando global
+## 🔹 3. Install as global command
 
 ```bash
 chmod +x install.sh
 ./install.sh
 ```
 
-Isso irá:
+This will:
 
-* copiar o CLI para `~/.realm-cli`
-* instalar dependências automaticamente
-* criar o comando global `realm-cli`
+* copy the CLI to `~/.realm-cli`
+* install dependencies automatically
+* create the global command `realm-cli`
 
 ---
 
-## ✅ Testar instalação
+## ✅ Test installation
 
 ```bash
 realm-cli --help
 ```
 
-ou:
+or:
 
 ```bash
-realm-cli caminho/do/banco.realm -s
+realm-cli path/to/database.realm -s
 ```
 
 ---
 
-# 🧪 Uso básico
+# 🧪 Basic Usage
 
-## Sintaxe
+## Syntax
 
 ```bash
-realm-cli <caminho-do-banco.realm> [opções]
+realm-cli <path-to-database.realm> [options]
 ```
 
 ---
 
-# 📚 Comandos
+# 📚 Commands
 
-## 🔹 Listar schemas
+## 🔹 List schemas
 
 ```bash
-realm-cli banco.realm -s
+realm-cli database.realm -s
 ```
 
 ---
 
-## 🔹 Ver campos de um schema
+## 🔹 View schema fields
 
 ```bash
-realm-cli banco.realm -d Usuario
+realm-cli database.realm -d User
 ```
 
 ---
 
-## 🔹 Executar query
+## 🔹 Execute query
 
 ```bash
-realm-cli banco.realm -q Usuario age \> 25
+realm-cli database.realm -q User age \> 25
 ```
 
 ---
 
-## 💻 Modo interativo
+## 💻 Interactive mode
 
 ```bash
-realm-cli banco.realm -i
+realm-cli database.realm -i
 ```
 
-### Exemplo dentro do modo:
+### Example inside interactive mode:
 
 ```bash
-Usuario age > 25
+User age > 25
 ```
 
 ---
 
-# 📊 Output em tabela
+# 📊 Table Output
 
-Os resultados são exibidos automaticamente em formato tabular:
+Results are automatically displayed in a table format:
 
 ```
 ┌────────┬──────┐
 │ name   │ age  │
 ├────────┼──────┤
-│ João   │ 30   │
+│ John   │ 30   │
 │ Maria  │ 25   │
 └────────┴──────┘
 ```
 
 ---
 
-# 📄 Paginação
+# 📄 Pagination
 
-Limitar resultados:
+Limit results:
 
 ```bash
-realm-cli banco.realm -q Usuario age \> 18 --limit 10
+realm-cli database.realm -q User age \> 18 --limit 10
 ```
 
-Pular registros:
+Skip records:
 
 ```bash
-realm-cli banco.realm -q Usuario age \> 18 --offset 20
+realm-cli database.realm -q User age \> 18 --offset 20
 ```
 
 ---
 
-# 📤 Exportação
+# 📤 Export
 
 ## JSON
 
 ```bash
-realm-cli banco.realm -q Usuario age \> 18 --json output.json
+realm-cli database.realm -q User age \> 18 --json output.json
 ```
 
 ---
@@ -173,18 +176,18 @@ realm-cli banco.realm -q Usuario age \> 18 --json output.json
 ## CSV
 
 ```bash
-realm-cli banco.realm -q Usuario age \> 18 --csv output.csv
+realm-cli database.realm -q User age \> 18 --csv output.csv
 ```
 
 ---
 
-# 🔍 Exemplos de Query
+# 🔍 Query Examples
 
-## Comparações
+## Comparisons
 
 ```bash
-realm-cli banco.realm -q Usuario age \> 18
-realm-cli banco.realm -q Usuario age <= 30
+realm-cli database.realm -q User age \> 18
+realm-cli database.realm -q User age <= 30
 ```
 
 ---
@@ -192,87 +195,87 @@ realm-cli banco.realm -q Usuario age <= 30
 ## Strings
 
 ```bash
-realm-cli banco.realm -q Usuario name == "João"
-realm-cli banco.realm -q Usuario name BEGINSWITH "Ma"
-realm-cli banco.realm -q Usuario name CONTAINS "silva"
+realm-cli database.realm -q User name == "John"
+realm-cli database.realm -q User name BEGINSWITH "Ma"
+realm-cli database.realm -q User name CONTAINS "smith"
 ```
 
 ---
 
-## Condições múltiplas
+## Multiple conditions
 
 ```bash
-realm-cli banco.realm -q Usuario age \> 18 AND age < 30
+realm-cli database.realm -q User age \> 18 AND age < 30
 ```
 
 ---
 
-## Booleanos
+## Booleans
 
 ```bash
-realm-cli banco.realm -q Usuario ativo == true
+realm-cli database.realm -q User active == true
 ```
 
 ---
 
-# ⚠️ Observações Importantes
+# ⚠️ Important Notes
 
-## 🔸 1. Operador `>`
+## 🔸 1. The `>` operator
 
-O terminal interpreta `>` como redirecionamento.
+The terminal interprets `>` as redirection.
 
-### ❌ Errado:
+### ❌ Wrong:
 
 ```bash
-realm-cli banco.realm -q Usuario age > 25
+realm-cli database.realm -q User age > 25
 ```
 
-### ✅ Correto:
+### ✅ Correct:
 
 ```bash
-realm-cli banco.realm -q Usuario age \> 25
+realm-cli database.realm -q User age \> 25
 ```
 
-ou:
+or:
 
 ```bash
-realm-cli banco.realm -q Usuario "age > 25"
-```
-
----
-
-## 🔸 2. Nome do schema é case-sensitive
-
-```bash
-Usuario ✅
-usuario ❌
+realm-cli database.realm -q User "age > 25"
 ```
 
 ---
 
-## 🔸 3. Banco em modo leitura
+## 🔸 2. Schema names are case-sensitive
 
-A ferramenta usa:
+```bash
+User ✅
+user ❌
+```
+
+---
+
+## 🔸 3. Read-only database mode
+
+The tool uses:
 
 ```js
 readOnly: true
 ```
 
-👉 Nenhum dado será alterado
+👉 No data will be modified
 
 ---
 
-## 🔸 4. Caminhos com espaços
+## 🔸 4. Paths with spaces
 
 ```bash
-realm-cli "~/Downloads/meu banco.realm" -s
+realm-cli "~/Downloads/my database.realm" -s
 ```
 
 ---
 
-## 🔸 5. Limite padrão
+## 🔸 5. Default limit
 
-Se não definido:
+If not specified:
 
 ```bash
 --limit 20
@@ -280,29 +283,31 @@ Se não definido:
 
 ---
 
-# 💻 Modo Interativo (dicas)
+# 💻 Interactive Mode Tips
 
-Dentro do modo interativo:
+Inside interactive mode:
 
-* Pressione **TAB** para autocomplete
-* Use queries diretas:
+* Press **TAB** for autocomplete
+
+* Use direct queries:
 
   ```bash
-  Usuario age > 30
+  User age > 30
   ```
-* Digite:
+
+* Type:
 
   ```bash
   exit
   ```
 
-  para sair
+  to quit
 
 ---
 
 # 🛠️ Troubleshooting
 
-## ❌ Erro: módulo não encontrado
+## ❌ Error: module not found
 
 ```bash
 cd ~/.realm-cli
@@ -311,7 +316,7 @@ npm install
 
 ---
 
-## ❌ Erro de permissão
+## ❌ Permission error
 
 ```bash
 chmod +x install.sh
@@ -319,13 +324,13 @@ chmod +x install.sh
 
 ---
 
-## ❌ Comando não encontrado
+## ❌ Command not found
 
 ```bash
 ls /usr/local/bin/realm-cli
 ```
 
-Se não existir:
+If it does not exist:
 
 ```bash
 ./install.sh
@@ -333,7 +338,7 @@ Se não existir:
 
 ---
 
-## ❌ Problemas com dependências antigas
+## ❌ Problems with old dependencies
 
 ```bash
 rm -rf ~/.realm-cli
@@ -342,12 +347,12 @@ rm -rf ~/.realm-cli
 
 ---
 
-# 💡 Dicas avançadas
+# 💡 Advanced Tips
 
-### 🔹 Usar com arquivos grandes
+### 🔹 Use with large files
 
 ```bash
-realm-cli db.realm -q Usuario --limit 50
+realm-cli db.realm -q User --limit 50
 ```
 
 ---
@@ -360,41 +365,45 @@ realm-cli db.realm -h
 
 ---
 
-### 🔹 Exportar dados para análise
+### 🔹 Export data for analysis
 
 ```bash
-realm-cli db.realm -q Usuario --csv dados.csv
+realm-cli db.realm -q User --csv data.csv
 ```
 
 ---
 
-### 🔹 Explorar rapidamente um banco desconhecido
+### 🔹 Quickly inspect an unknown database
 
 ```bash
 realm-cli db.realm -s
-realm-cli db.realm -d NomeDoSchema
+realm-cli db.realm -d SchemaName
 ```
 
 ---
 
-### 🔹 Usar como ferramenta de análise
+### 🔹 Use as an analysis tool
 
-* engenharia reversa de apps mobile
-* debug de banco local
-* auditoria de dados
-
----
-
-# 🔮 Roadmap (futuro)
-
-* Autocomplete de campos
-* Parser estilo SQL (`SELECT * FROM`)
-* Histórico de comandos
-* Highlight de query
-* Export automático com timestamp
+* mobile app reverse engineering
+* local database debugging
+* data auditing
 
 ---
 
-# 📄 Licença
+# 🔮 Roadmap
+
+* Field autocomplete
+* SQL-style parser (`SELECT * FROM`)
+* Command history
+* Query highlighting
+* Automatic timestamped exports
+
+---
+
+# 📄 License
 
 By Marco Boschetti
+
+```
+```
+

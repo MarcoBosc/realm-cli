@@ -7,68 +7,91 @@ function showHelp() {
   console.log(`
 📦 Realm CLI Explorer v${VERSION}
 
-Uso:
-  realm-cli <caminho-para-banco.realm> [opções]
+Usage:
+  realm-cli <path-to-database.realm> [options]
 
-Comandos:
+Commands:
   -s, --schemas
-      Lista schemas (tabelas) disponíveis no banco
+      List available schemas (tables) in the database
 
   -d, --describe <schema>
-      Mostra a estrutura (campos) do schema informado
+      Show schema structure and fields
 
   -q, --query <schema> <query>
-      Executa uma query em Realm Query Language sobre o schema
-      Ex.: realm-cli db.realm -q Usuario "age > 25"
+      Execute a Realm Query Language query on a schema
+      Example:
+        realm-cli db.realm -q User "age > 25"
 
   -i, --interactive
-      Modo interativo (shell). Digite 'exit' para sair. Tab para autocomplete de schemas
+      Interactive shell mode.
+      Type 'exit' to quit.
+      Press TAB for schema autocomplete.
 
-Opções:
+Options:
   --format <json|table>
-      Formato de saída. Padrão: json
+      Output format.
+      Default: json
 
   --pretty
-      Indenta o JSON de saída
+      Pretty-print JSON output
 
-  --select campo1,campo2
-      Seleciona apenas campos específicos no resultado
+  --select field1,field2
+      Return only selected fields
 
-  --json <arquivo>
-      Exporta o resultado para um arquivo JSON
+  --json <file>
+      Export results to JSON file
 
-  --csv <arquivo>
-      Exporta o resultado para um arquivo CSV
+  --csv <file>
+      Export results to CSV file
 
   --limit <n>
-      Limita número de resultados (padrão: 20)
+      Limit number of results
+      Default: 20
 
   --offset <n>
-      Pula os primeiros N registros (paginação)
+      Skip first N results (pagination)
 
   -v, --version
-      Mostra versão
+      Show CLI version
 
   -h, --help
-      Mostra essa ajuda
+      Show this help message
 
-Observações importantes:
-  - Operadores e expressões com caracteres especiais (ex: >, <) devem ser passados entre aspas
-      Ex.: realm-cli db.realm -q Usuario "age > 25"
-  - Nome do schema é case-sensitive
-      Ex.: Usuario (correto) != usuario
-  - O CLI abre o banco em modo somente leitura (readOnly: true)
-  - Quando usar -q, informe primeiro o schema, depois a query:
-      realm-cli db.realm -q Usuario "active == true AND age >= 18"
-  - Para queries com listas use sintaxe IN:
-      realm-cli db.realm -q Usuario 'uuid IN ["id1","id2"]'
+Important Notes:
+  - Expressions with special characters
+    such as > or < must be wrapped in quotes
 
-Exemplos rápidos:
+      Example:
+        realm-cli db.realm -q User "age > 25"
+
+  - Schema names are case-sensitive
+
+      Correct:
+        User
+
+      Incorrect:
+        user
+
+  - Database is always opened in read-only mode
+      (readOnly: true)
+
+  - Query syntax:
+      realm-cli db.realm -q User "active == true AND age >= 18"
+
+  - Use IN syntax for list filtering:
+
+      realm-cli db.realm -q User 'uuid IN ["id1","id2"]'
+
+Quick Examples:
   realm-cli db.realm -s
-  realm-cli db.realm -d Usuario
-  realm-cli db.realm -q Usuario "created_at >= '2025-01-01'"
-  realm-cli db.realm -q Usuario age=25 --pretty
-  realm-cli db.realm -q Usuario --select id,name,email --format table
+
+  realm-cli db.realm -d User
+
+  realm-cli db.realm -q User "created_at >= '2025-01-01'"
+
+  realm-cli db.realm -q User age=25 --pretty
+
+  realm-cli db.realm -q User --select id,name,email --format table
 
 `);
 }

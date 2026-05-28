@@ -405,5 +405,3 @@ realm-cli db.realm -d SchemaName
 By Marco Boschetti
 
 ```
-```
-

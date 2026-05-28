@@ -436,5 +436,3 @@ realm-cli db.realm -d SchemaName
 # 📄 License
 
 By Marco Boschetti
-
-```

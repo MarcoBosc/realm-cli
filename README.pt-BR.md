@@ -26,10 +26,43 @@ Ideal para debug, engenharia reversa, análise de dados e inspeção de apps mob
 
 ```bash
 realm-cli/
- ├── explorer.js
- ├── install.sh
- ├── package.json
- └── README.md
+├── bin/
+│   └── realm-cli.js
+│
+├── src/
+│   ├── constants/
+│   │   └── version.js
+│   │
+│   ├── helpers/
+│   │   ├── args.js
+│   │   ├── pagination.js
+│   │   └── serializer.js
+│   │
+│   ├── query/
+│   │   ├── normalize.js
+│   │   └── builder.js
+│   │
+│   ├── output/
+│   │   ├── table.js
+│   │   ├── output.js
+│   │   └── export.js
+│   │
+│   ├── interactive/
+│   │   └── interactive.js
+│   │
+│   ├── commands/
+│   │   ├── schemas.js
+│   │   ├── describe.js
+│   │   └── query.js
+│   │
+│   ├── help/
+│   │   └── help.js
+│   │
+│   └── index.js
+│
+├── package.json
+├── install.sh
+└── README.md
 ```
 
 ---

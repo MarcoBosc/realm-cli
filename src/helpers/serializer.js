@@ -31,7 +31,21 @@ function getSelectedFields(args) {
     return null;
   }
 
-  return args[idx + 1]
+  // Collect all tokens after --select until the next flag (starts with -)
+  const parts = [];
+  for (let i = idx + 1; i < args.length; i++) {
+    const token = args[i];
+    if (token.startsWith("-")) break;
+    parts.push(token);
+  }
+
+  // Join tokens and split by comma to support:
+  // --select nome,email,uuid
+  // --select "nome, email, uuid"
+  // --select nome, email, uuid (separated tokens)
+  const joined = parts.join(" ");
+
+  return joined
     .split(",")
     .map(f => f.trim())
     .filter(Boolean);

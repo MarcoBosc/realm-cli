@@ -14,7 +14,15 @@ const {
 const runQuery =
   require("./commands/query");
 
+const listSchemas =
+  require("./commands/schemas");
+
+const describeSchema =
+  require("./commands/describe");
+
 async function run() {
+
+  try {
 
   const args =
     process.argv.slice(2);
@@ -41,11 +49,60 @@ async function run() {
 
   const path = args[0];
 
+  if (!path) {
+
+    showHelp();
+
+    process.exit(1);
+  }
+
   const realm =
     await Realm.open({
       path,
       readOnly: true
     });
+
+  const sIndex =
+    getFlagIndex(
+      args,
+      "-s",
+      "--schemas"
+    );
+
+  if (sIndex !== -1) {
+
+    await listSchemas(
+      realm,
+      args
+    );
+
+    realm.close();
+
+    process.exit(0);
+  }
+
+  const dIndex =
+    getFlagIndex(
+      args,
+      "-d",
+      "--describe"
+    );
+
+  if (dIndex !== -1) {
+
+    const schemaName =
+      args[dIndex + 1];
+
+    await describeSchema(
+      realm,
+      schemaName,
+      args
+    );
+
+    realm.close();
+
+    process.exit(0);
+  }
 
     const qIndex =
     getFlagIndex(
@@ -61,6 +118,16 @@ async function run() {
 
     // Stop collecting query parts when we hit a flag
     const stopFlags = [
+      "-h",
+      "--help",
+      "-v",
+      "--version",
+      "-s",
+      "--schemas",
+      "-d",
+      "--describe",
+      "-q",
+      "--query",
       "--json",
       "--csv",
       "--limit",
@@ -104,6 +171,20 @@ async function run() {
     realm.close();
 
     process.exit(0);
+  }
+
+  realm.close();
+
+  showHelp();
+
+  process.exit(1);
+  } catch (error) {
+
+    console.error(
+      error.message
+    );
+
+    process.exit(1);
   }
 }
 

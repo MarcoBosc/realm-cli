@@ -165,9 +165,17 @@ User age > 25
 
 ---
 
-# 📊 Table Output
+# 📊 Output Format
 
-Results are automatically displayed in a table format:
+Default output is JSON.
+
+Use table output only when explicitly requested:
+
+```bash
+realm-cli database.realm -q User "age > 18" --format table
+```
+
+Example table output:
 
 ```
 ┌────────┬──────┐
@@ -394,6 +402,15 @@ realm-cli db.realm -q User --limit 50
 
 ```bash
 realm-cli db.realm -h
+```
+
+---
+
+### 🔹 Version
+
+```bash
+realm-cli -v
+realm-cli --version
 ```
 
 ---

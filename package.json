@@ -1,5 +1,5 @@
 {
-  "name": "realm",
+  "name": "realm-cli",
   "version": "1.0.0",
   "description": "Ferramenta CLI para explorar bancos **.realm** diretamente pelo terminal — agora com recursos avançados de visualização e interação.",
   "main": "index.js",
